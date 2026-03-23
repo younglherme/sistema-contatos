@@ -10,7 +10,7 @@ public with sharing class ContatoService {
     }
 
     @AuraEnabled
-    public static Contato_Projeto__C criarContato(
+    public static Contato_Projeto__c criarContato(
         String nome, String email, String telefone
     ){
         try {
@@ -26,8 +26,9 @@ public with sharing class ContatoService {
             throw new AuraHandledException(e.getMessage());
         }
     }
+
     @AuraEnabled
-    public static Contato_Projeto__C deletarContato(Id contatoId) {
+    public static void deletarContato(Id contatoId) {
         try {
             Contato_Projeto__c contato = [
                 SELECT Id 
@@ -35,6 +36,8 @@ public with sharing class ContatoService {
                 WHERE Id = :contatoId LIMIT 1];
            
             delete contato;
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
         }
     }
 }

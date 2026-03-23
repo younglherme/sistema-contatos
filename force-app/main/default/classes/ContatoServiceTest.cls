@@ -3,14 +3,14 @@ public class ContatoServiceTest {
 
     @isTest
     static void testCriarContato() {
-        Teste.startTest();
+        Test.startTest();
 
         Contato_Projeto__c resultado = ContatoService.criarContato(
             'Guilherme Silva', 'gluizdasilva@gmail.com', '24993145766');
-        Teste.stopTest();
+        Test.stopTest();
 
         System.assertNotEquals(null, resultado.Id);
-        System.assertEquals('Guilherme Silva', resultado.Nome__c);
+        System.assertEquals('Guilherme Silva', resultado.Name);
         System.assertEquals('gluizdasilva@gmail.com', resultado.Email__c);
         System.assertEquals('24993145766', resultado.Telefone__c);
     }
@@ -21,12 +21,12 @@ public class ContatoServiceTest {
             Name= 'Teste',Email__c = 'teste@gmail.com'
         );
         
-        Teste.startTest();
+        Test.startTest();
 
         List<Contato_Projeto__c> contatos = 
         ContatoService.listarContatos();
 
-        Teste.stopTest();
+        Test.stopTest();
 
         System.assertEquals(1, contatos.size());
     }
