@@ -1,0 +1,22 @@
+<template>
+    <lightning-card title="Contatos" icon-name="standard:contact">
+        <div class="slds-p-around_medium">
+            <lightning-input label="Nome"     data-id="nome"></lightning-input>
+            <lightning-input label="Email"    data-id="email"></lightning-input>
+            <lightning-input label="Telefone" data-id="telefone"></lightning-input>
+            <lightning-button
+                label="Salvar"
+                onclick={criarContato}
+                variant="brand"
+                class="slds-m-top_small">
+            </lightning-button>
+        </div>
+        <template if:true={contatos}>
+            <template for:each={contatos} for:item="c">
+                <div key={c.Id} class="slds-p-horizontal_medium slds-p-bottom_small">
+                    <b>{c.Name}</b> — {c.Email__c} — {c.Telefone__c}
+                </div>
+            </template>
+        </template>
+    </lightning-card>
+</template>
